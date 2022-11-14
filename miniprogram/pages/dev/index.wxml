@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view style="text-align: center;margin: 1.4em;">小程序蓝牙配网{{version}}</view>
+<view style="padding-left: 1.2em;color: rgba(0,0,0,.5);font-size: 14px;">
+  蓝牙名称：<input class="wifi" style="display: inline-flex;" bindinput="bindbleInput" value="{{ble_name}}" type="text"  placeholder="在此输入蓝牙名称"/>
+</view>
+<input class="wifi" bindinput="bindSsidInput" value="{{ssid}}" type="text"  placeholder="在此输入WIFI/热点名称"/>
+<input class="wifi" value="{{password}}" bindinput="bindPasswordInput" type="text"  placeholder="在此输入连接密码" />
+<button style="margin-bottom: 1.5em;margin-top: 1.5em;" bindtap="Sendtoble"  type="primary" disabled="{{!ssid||!password}}">发送数据</button>
+<view class="footer">Copyright ©2022 OrangeThinK {{version}}</view>
+
+<scroll-view scroll-y class="page  {{ msg.status==1 ? 'show' : '' }}" catchtouchmove="empty">
+	<view
+		class="_mask _flex-row-center-mid"
+		bindtap="setNewData"
+		data-prop="form.title"
+		data-val=""
+	>
+		<view style="background:#ffffff80 !important ;" class="_pos-rel _mar-x-30 _wid-100 _flex-col-mid _white-bg _border-radius-10" catchtap="empty">
+      <view class="vs" wx:for-index="k"  wx:for="{{list}}" style="background-color:{{item.next_x<=item.before_day?'#25cd98':bg_rd[k%bg_rd.length]}} !important;font-weight:{{item.next_x<=item.before_day?'bolder':''}} ;">
+  <!-- <view >{{morejs.format(item.add_stamp)}}</view> -->
+
+  <view >
+	<view style="margin-left: 10%;">
+	<!-- <image style="height: 40px;width: 40px;border-radius: 50%;" wx:if="{{item.avator}}" src="https://www.mochengli.cn{{item.avator}}"></image> -->
+	{{item.nickname}}  <text wx:if="{{item.birth_x}}" style="font-size: smaller;">{{item.birth_x}}岁生日</text></view>
+  <!-- <view style="margin-left: 10%;" wx:if="{{item.is_lunar}}">
+  <image wx:if="{{item.sex==1}}" style="height: 28px;width: 28px;" src="../../images/boy.png"></image><image wx:if="{{item.sex==0}}" style="height: 28px;width: 28px;" src="../../images/girl.png"></image>
+  </view>-->
+  <view style="margin-left: 10%;    color: #ccc;" ><text>{{item.next_y}}/</text>{{item.next_m}}/{{item.next_d}}
+  <text wx:if="{{item.is_lunar==1}}"> ({{item.birth_m}}{{item.birth_d}}）</text>
+</view>
+  <!-- <view style="margin-left: 10%;" wx:if="{{item.is_lunar}}">({{item.lunar_y}}年{{item.lunar_m}}<text wx:if="{{item.is_lunar==1}}">月</text>{{item.lunar_d}}日 <text wx:if="{{item.is_lunar==0}}">属{{item.lunar_x}}</text>)
+</view> -->
+
+  </view>
+  <view style="justify-self:center;align-self:center;font-size: x-large;">
+{{item.next_x}}<text style="font-size: small;">天</text></view>
+</view>
+
+
+		</view>
+	</view>
+</scroll-view>

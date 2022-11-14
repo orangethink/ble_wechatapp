@@ -1,0 +1,18 @@
+/**index.wxss**/
+.wifi{
+  border-bottom: 1px solid grey;
+  padding: 0.5em;
+  margin: 8px 1em;
+}
+
+.footer{
+  color: rgba(0,0,0,.3);
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+
+
+

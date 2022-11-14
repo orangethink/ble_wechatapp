@@ -1,0 +1,40 @@
+
+module.exports = {
+	// 如果数字类型的小数后是 0 的话，小数会被省略
+	// 例如 数字 100.00，显示的其实是 100
+	floatNum: function (num) {
+		return num.toFixed(2)
+	},
+	day:function(time){
+		var date=(time?getDate(time):getDate(getDate().setHours(0, 0, 0, 0))),
+		Y = date.getFullYear(),
+		M = date.getMonth() + 1,
+		D = date.getDate()
+		return Y+'年'+M+'月'+D+'日';
+	},
+	Num2:function(val){
+return val<10?'0'+val+':00':val+':00';
+	},
+	valMark:function(v1,v2,list){
+		var val=v1+''+v2;
+		for(var i=0;i<list.length;i++){
+			for(var j=0;j<list[i].list.length;j++){
+				if(val===list[i].list[j]){
+
+					return list[i].val
+				}
+			}
+		}
+	},
+	some: function (val, list, key) {
+		if (key) {
+			return list.some(function (item) {
+				return item[key] === val
+			})
+		} else {
+			return list.some(function (item) {
+				return item === val
+			})
+		}
+	}
+}
